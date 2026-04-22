@@ -11,13 +11,13 @@ export default function Login({ onLogin, members }) {
   const go = () => {
     setErr('')
     if (mode === 'admin') {
-      if (pass === 'adminyot123') onLogin('admin', { name: 'Admin', id: '0' })
+      if (pass === 'adminyot99663322') onLogin('admin', { name: 'Admin', id: '0' })
       else setErr('Wrong password. Try: 123')
     } else {
       const m = members?.find(x => x.id === memId)
       if (!m)   { setErr('Please select your name'); return }
-      if (pass === 'member123') onLogin('member', m)
-      else setErr('Wrong password. Try: m123')
+      if (pass === 'yotmember123') onLogin('member', m)
+      else setErr('Wrong password, Try again.')
     }
   }
 
@@ -34,7 +34,7 @@ export default function Login({ onLogin, members }) {
         <p  style={S.loginSub}>by Team71 · Fund Manager</p>
 
         <div style={S.cloudBadge}>
-          ☁️ Cloud Edition · Live sync across all members
+          ☁️ Your data will be sync across all members.
         </div>
 
         <div style={S.modeTabs}>
@@ -44,7 +44,7 @@ export default function Login({ onLogin, members }) {
               onClick={() => { setMode(m); setErr(''); setPass('') }}
               style={{ ...S.modeTab, ...(mode === m ? S.modeTabOn : {}) }}
             >
-              {m === 'admin' ? '🔑 Admin' : '👤 Member'}
+              {m === 'admin' ? '🔑 Admin Login' : '👤 Member Login'}
             </button>
           ))}
         </div>
@@ -75,7 +75,7 @@ export default function Login({ onLogin, members }) {
 
         {err && <div style={S.loginErr}>{err}</div>}
 
-        <p style={S.loginHint}>Demo passwords: admin123 / member123</p>
+        <p style={S.loginHint}>Remember your password for login later.</p>
       </div>
     </div>
   )
