@@ -11,13 +11,13 @@ export default function Login({ onLogin, members }) {
   const go = () => {
     setErr('')
     if (mode === 'admin') {
-      if (pass === 'admin123') onLogin('admin', { name: 'Admin', id: '0' })
-      else setErr('Wrong password. Try: admin123')
+      if (pass === 'adminyot123') onLogin('admin', { name: 'Admin', id: '0' })
+      else setErr('Wrong password. Try: 123')
     } else {
       const m = members?.find(x => x.id === memId)
       if (!m)   { setErr('Please select your name'); return }
       if (pass === 'member123') onLogin('member', m)
-      else setErr('Wrong password. Try: member123')
+      else setErr('Wrong password. Try: m123')
     }
   }
 
