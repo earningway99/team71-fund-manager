@@ -36,7 +36,7 @@ export function fmtMonth(key) {
   return `${MONTHS[+m - 1]} ${y}`
 }
 
-export function genMonthKeys(from = '2025-01') {
+export function genMonthKeys(from = '2025-10') {
   const keys = []
   const [fy, fm] = from.split('-').map(Number)
   const now = new Date()
