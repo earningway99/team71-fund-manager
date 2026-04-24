@@ -69,8 +69,8 @@ export default function App() {
       <div style={S.bootScreen}>
         <div style={S.bootCard}>
           <div style={S.bootLogo}>💰</div>
-          <div style={S.bootTitle}>Team71 Fund Manager</div>
-          <div style={S.bootSub}>Connecting to cloud database…</div>
+          <div style={S.bootTitle}>Youth organisation - Fund manager</div>
+          <div style={S.bootSub}>This is still in the beta phase, so some data may be inaccurate.</div>
           <div style={S.spinner} />
         </div>
       </div>
@@ -145,7 +145,7 @@ export default function App() {
         <div style={S.topLeft}>
           <div style={S.orgBadge}>YO</div>
           <div>
-            <div style={S.orgName}>Team71 Fund Manager</div>
+            <div style={S.orgName}>Youth Organisation - Fund Manager</div>
             <div style={S.orgSub}>{role === 'admin' ? '⚙️ Admin Panel' : `👤 ${authUser?.name}`}</div>
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function App() {
             ? <div style={S.savingPill}>☁ Saving…</div>
             : <div style={S.savedPill}>☁ Synced</div>
           }
-          <button onClick={logout} style={S.logoutBtn}>↩</button>
+          <button onClick={logout} style={S.logoutBtn}>Signout</button>
         </div>
       </header>
 
