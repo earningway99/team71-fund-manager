@@ -42,7 +42,7 @@ export default function App() {
     setTimeout(() => setToast(null), 3000)
   }
 
-  const monthKeys    = useMemo(() => genMonthKeys('2025-01'), [])
+  const monthKeys = useMemo(() => genMonthKeys('2025-10'), [])
   const currentMonth = nowMonthKey()
 
   const totalCollected = (mk) =>
