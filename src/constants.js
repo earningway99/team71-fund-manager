@@ -5,9 +5,9 @@ export const DONATION_AMOUNT = 100   // BDT per member per month
 // ── Each member now has an email field ────────────────────────────
 // Replace these emails with your real members' emails
 export const SEED_MEMBERS = [
-  { id: '1',  name: 'Shakil',   phone: '01711-000001', joinDate: '2024-01-01', email: 'mahmoodshakil4@gmail.com'   },
+  { id: '1',  name: 'Shakil', joinDate: '2025-10-09', email: 'mahmoodshakil4@gmail.com'   },
   { id: '2',  name: 'Karim Hossain', phone: '01711-000002', joinDate: '2024-01-01', email: 'karim@team71.com'   },
-  { id: '3',  name: 'Tasif',   phone: '01711-000003', joinDate: '2024-02-01', email: 'tanvirtasif2000@gmail.com'   },
+  { id: '3',  name: 'Tasif', joinDate: '2025-10-09', email: 'tanvirtasif2000@gmail.com'   },
   { id: '4',  name: 'Selim Reza',    phone: '01711-000004', joinDate: '2024-02-01', email: 'selim@team71.com'   },
   { id: '5',  name: 'Nasim Khan',    phone: '01711-000005', joinDate: '2024-03-01', email: 'nasim@team71.com'   },
   { id: '6',  name: 'Tariq Islam',   phone: '01711-000006', joinDate: '2024-03-01', email: 'tariq@team71.com'   },
