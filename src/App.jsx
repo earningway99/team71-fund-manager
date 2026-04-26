@@ -55,12 +55,7 @@ export default function App() {
     return () => unsub()
   }, [])
 
-  useEffect(() => {
-    if (role === 'member' && authUser && members?.length > 0 && !authUser.name) {
-      const matched = members.find(m => m.email === authUser.email)
-      if (matched) setAuthUser(prev => ({ ...prev, ...matched }))
-    }
-  }, [members, role, authUser])
+  useEffect(() => { if (role === 'member' && authUser && members?.length > 0) { const matched = members.find(m => m.email?.toLowerCase().trim() === authUser.email?.toLowerCase().trim() ) if (matched && authUser.id !== matched.id) { setAuthUser(prev => ({ ...prev, ...matched })) } } }, [members, role])
 
   const showToast = (msg, type = 'success') => {
     setToast({ msg, type })
