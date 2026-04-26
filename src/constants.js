@@ -5,17 +5,17 @@ export const DONATION_AMOUNT = 100   // BDT per member per month
 // ── Each member now has an email field ────────────────────────────
 // Replace these emails with your real members' emails
 export const SEED_MEMBERS = [
-  { id: '1',  name: 'Shakil', joinDate: '2025-10-09', email: 'mahmoodshakil4@gmail.com'   },
-  { id: '2',  name: 'Karim Hossain', phone: '01711-000002', joinDate: '2024-01-01', email: 'karim@team71.com'   },
-  { id: '3',  name: 'Tasif', joinDate: '2025-10-09', email: 'tanvirtasif2000@gmail.com'   },
-  { id: '4',  name: 'Selim Reza',    phone: '01711-000004', joinDate: '2024-02-01', email: 'selim@team71.com'   },
-  { id: '5',  name: 'Nasim Khan',    phone: '01711-000005', joinDate: '2024-03-01', email: 'nasim@team71.com'   },
-  { id: '6',  name: 'Tariq Islam',   phone: '01711-000006', joinDate: '2024-03-01', email: 'tariq@team71.com'   },
-  { id: '7',  name: 'Faruk Miah',    phone: '01711-000007', joinDate: '2024-04-01', email: 'faruk@team71.com'   },
-  { id: '8',  name: 'Rubel Sarker',  phone: '01711-000008', joinDate: '2024-04-01', email: 'rubel@team71.com'   },
-  { id: '9',  name: 'Masum Billah',  phone: '01711-000009', joinDate: '2024-05-01', email: 'masum@team71.com'   },
-  { id: '10', name: 'Shakil Mahmud', phone: '01711-000010', joinDate: '2024-05-01', email: 'shakil@team71.com'  },
-  { id: '11', name: 'Imran Haque',   phone: '01711-000011', joinDate: '2024-06-01', email: 'imran@team71.com'   },
+  { id: '1777040609640',  name: 'Shakil',   joinDate: '2025-10-09', email: 'mahmoodshakil4@gmail.com'  },
+  { id: '2',  name: 'Karim Hossain', joinDate: '2025-10-09', email: 'karim_real@gmail.com'  },
+  { id: '1777041621324',  name: 'Tasif',   joinDate: '2025-10-09', email: 'tanvirtasif2000@gmail.com'  },
+  { id: '4',  name: 'Selim Reza',    joinDate: '2025-10-09', email: 'selim_real@gmail.com'  },
+  { id: '5',  name: 'Nasim Khan',    joinDate: '2025-10-09', email: 'nasim_real@gmail.com'  },
+  { id: '6',  name: 'Tariq Islam',   joinDate: '2025-10-09', email: 'tariq_real@gmail.com'  },
+  { id: '7',  name: 'Faruk Miah',    joinDate: '2025-10-09', email: 'faruk_real@gmail.com'  },
+  { id: '8',  name: 'Rubel Sarker',  joinDate: '2025-10-09', email: 'rubel_real@gmail.com'  },
+  { id: '9',  name: 'Masum Billah',  joinDate: '2025-10-09', email: 'masum_real@gmail.com'  },
+  { id: '10', name: 'Shakil Mahmud', joinDate: '2025-10-09', email: 'shakil_real@gmail.com' },
+  { id: '11', name: 'Imran Haque',   joinDate: '2025-10-09', email: 'imran_real@gmail.com'  },
 ]
 
 export const MONTHS = [
