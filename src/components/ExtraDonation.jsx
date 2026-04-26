@@ -18,9 +18,7 @@ const blank = () => ({
   date: new Date().toISOString().slice(0, 10),
 })
 
-export default function ExtraDonation({
-  members, extraDonations, saveExtraDonations,
-  totalExtraDonations, showToast
+export default function ExtraDonation({ members, extraDonations, saveExtraDonations, totalExtraDonations, showToast, viewOnly }) {
 }) {
   const [form,    setForm]    = useState(blank())
   const [open,    setOpen]    = useState(false)
@@ -83,7 +81,7 @@ export default function ExtraDonation({
     <div style={S.page}>
       <div style={S.pageHead}>
         <h2 style={S.pageTitle}>Extra Donations</h2>
-        <button onClick={() => setOpen(!open)} style={S.addBtn}>{open ? '✕ Close' : '+ Add'}</button>
+        {!viewOnly && <button onClick={() => setOpen(!open)} style={S.addBtn}>{open ? '✕ Close' : '+ Add'}</button>}
       </div>
 
       {/* summary card */}
@@ -94,8 +92,7 @@ export default function ExtraDonation({
       </div>
 
       {/* add form */}
-      {open && (
-        <div style={S.formCard}>
+     {open && !viewOnly && ( <div style={S.formCard}>
           <div style={S.cardTitle}>➕ Add Extra Donation</div>
 
           <select
@@ -173,7 +170,7 @@ export default function ExtraDonation({
                 <div style={{ fontSize: 11, color: '#6b7280' }}>{e.date} · {e.reason}{e.note ? ` · ${e.note}` : ''}</div>
               </div>
               <span style={{ fontWeight: 800, color: '#2563eb', marginRight: 6 }}>৳{e.amount}</span>
-              <button onClick={() => del(e.id)} disabled={busy} style={S.iconBtn}>🗑️</button>
+              {!viewOnly && <button onClick={() => del(e.id)} disabled={busy} style={S.iconBtn}>🗑️</button>}
             </div>
           ))}
           {extraDonations.length === 0 && <div style={S.empty}>No extra donations recorded yet.</div>}
