@@ -2,9 +2,7 @@
 import { fmtMonth, DONATION_AMOUNT } from '../constants'
 import S from '../styles'
 
-export default function MyPayments({ authUser, payments, monthKeys }) {
-  const myPaid = monthKeys.filter(mk => payments[mk]?.[authUser?.id])
-  const total  = myPaid.length * DONATION_AMOUNT
+export default function MyPayments({ authUser, payments, monthKeys, members }) { // Find the correct member using email if ID is not set yet const resolvedMember = (authUser?.id && authUser?.name) ? authUser : members?.find(m => m.email?.toLowerCase().trim() === authUser?.email?.toLowerCase().trim() ) const memberId = resolvedMember?.id const myPaid = monthKeys.filter(mk => payments[mk]?.[memberId]) const total = myPaid.length * DONATION_AMOUNT
 
   return (
     <div style={S.page}>
@@ -12,7 +10,7 @@ export default function MyPayments({ authUser, payments, monthKeys }) {
 
       {/* hero card */}
       <div style={{ ...S.card, background: 'linear-gradient(135deg,#0f172a,#134e4a)', border: 'none', marginBottom: 14 }}>
-        <div style={{ color: '#94a3b8', fontSize: 12, marginBottom: 4 }}>{authUser?.name}</div>
+        <div style={{ color: '#94a3b8', fontSize: 12, marginBottom: 4 }}>{resolvedMember?.name || authUser?.email}</div>
         <div style={{ color: '#4ade80', fontSize: 28, fontWeight: 900 }}>৳{total}</div>
         <div style={{ color: '#86efac', fontSize: 13 }}>Total contributed to date</div>
         <div style={{ display: 'flex', gap: 14, marginTop: 10 }}>
@@ -23,7 +21,7 @@ export default function MyPayments({ authUser, payments, monthKeys }) {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         {[...monthKeys].reverse().map(mk => {
-          const p = payments[mk]?.[authUser?.id]
+          const p = payments[mk]?.[memberId]
           return (
             <div
               key={mk}
