@@ -23,7 +23,7 @@ const CAT_COLORS = {
   Equipment: '#ea580c', Maintenance: '#0891b2', Other: '#64748b'
 }
 
-export default function Expenses({ expenses, saveExpenses, balance, allTimeCollected, showToast }) {
+export default function Expenses({ expenses, saveExpenses, balance, allTimeCollected, showToast, viewOnly }) {
   const [form,      setForm]      = useState(blank())
   const [open,      setOpen]      = useState(false)
   const [busy,      setBusy]      = useState(false)
@@ -82,7 +82,7 @@ export default function Expenses({ expenses, saveExpenses, balance, allTimeColle
     <div style={S.page}>
       <div style={S.pageHead}>
         <h2 style={S.pageTitle}>Expenses</h2>
-        <button onClick={() => setOpen(!open)} style={S.addBtn}>{open ? '✕ Close' : '+ Add'}</button>
+        {!viewOnly && <button onClick={() => setOpen(!open)} style={S.addBtn}>{open ? '✕ Close' : '+ Add'}</button>}
       </div>
 
       {/* balance card */}
@@ -93,8 +93,7 @@ export default function Expenses({ expenses, saveExpenses, balance, allTimeColle
       </div>
 
       {/* add form */}
-      {open && (
-        <div style={S.formCard}>
+      {open && !viewOnly && ( <div style={S.formCard}>
           <div style={S.cardTitle}>💸 Record Expense</div>
           <input placeholder='Description *' value={form.description} onChange={e => setForm(p => ({ ...p, description: e.target.value }))} style={S.inp} />
           <input type='number' placeholder='Amount (৳) *' value={form.amount} onChange={e => setForm(p => ({ ...p, amount: e.target.value }))} style={S.inp} />
@@ -142,7 +141,7 @@ export default function Expenses({ expenses, saveExpenses, balance, allTimeColle
                 <div style={{ fontSize: 11, color: '#6b7280' }}>{e.date} · {e.category}</div>
               </div>
               <span style={{ fontWeight: 800, color: '#dc2626', marginRight: 6 }}>৳{e.amount}</span>
-              <button onClick={() => del(e.id)} disabled={busy} style={S.iconBtn}>🗑️</button>
+              {!viewOnly && <button onClick={() => del(e.id)} disabled={busy} style={S.iconBtn}>🗑️</button>}
             </div>
           ))}
           {expenses.length === 0 && <div style={S.empty}>No expenses recorded yet.</div>}
