@@ -132,7 +132,7 @@ export default function App() {
           { id: 'expenses',     icon: '💸', label: 'Expenses' },
           { id: 'extradonation',icon: '➕', label: 'Extra'    },
         ]
-      : [{ id: 'mypay', icon: '👤', label: 'Mine' }]
+      : [ { id: 'mypay', icon: '👤', label: 'Mine' }, { id: 'expenses', icon: '💸', label: 'Expenses' }, { id: 'extradonation', icon: '➕', label: 'Extra' }, ]
     ),
     { id: 'reports', icon: '📊', label: 'Reports' },
   ]
@@ -160,7 +160,7 @@ export default function App() {
             : <div style={S.orgBadge}>YO</div>
           }
           <div>
-            <div style={S.orgName}>Team71 Fund Manager</div>
+            <div style={S.orgName}>Youth Organisation Fund Manager</div>
             <div style={S.orgSub}>
               {role === 'admin' ? '⚙️ Admin Panel' : `👤 ${authUser?.name || authUser?.email}`}
             </div>
@@ -177,8 +177,7 @@ export default function App() {
         {tab === 'dashboard'     && <Dashboard     {...sharedProps} />}
         {tab === 'donations'     && <Donations     {...sharedProps} />}
         {tab === 'members'       && role === 'admin' && <Members       {...sharedProps} />}
-        {tab === 'expenses'      && role === 'admin' && <Expenses      {...sharedProps} />}
-        {tab === 'extradonation' && role === 'admin' && <ExtraDonation {...sharedProps} />}
+       {tab === 'expenses' && <Expenses {...sharedProps} viewOnly={role === 'member'} />} {tab === 'extradonation' && <ExtraDonation {...sharedProps} viewOnly={role === 'member'} />}
         {tab === 'reports'       && <Reports       {...sharedProps} />}
         {tab === 'mypay'         && role === 'member' && <MyPayments   {...sharedProps} />}
       </main>
