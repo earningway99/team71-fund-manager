@@ -5,9 +5,9 @@ export const DONATION_AMOUNT = 100   // BDT per member per month
 // ── Each member now has an email field ────────────────────────────
 // Replace these emails with your real members' emails
 export const SEED_MEMBERS = [
-  { id: '0',  name: 'Shakil',   joinDate: '2025-10-09', email: 'mahmoodshakil4@gmail.com'  },
+  { id: '1',  name: 'Shakil',   joinDate: '2025-10-09', email: 'mahmoodshakil4@gmail.com'  },
   { id: '2',  name: 'Karim Hossain', joinDate: '2025-10-09', email: 'karim_real@gmail.com'  },
-  { id: '2',  name: 'Tasif',   joinDate: '2025-10-09', email: 'tanvirtasif2000@gmail.com'  },
+  { id: '3',  name: 'Tasif',   joinDate: '2025-10-09', email: 'tanvirtasif2000@gmail.com'  },
   { id: '4',  name: 'Selim Reza',    joinDate: '2025-10-09', email: 'selim_real@gmail.com'  },
   { id: '5',  name: 'Nasim Khan',    joinDate: '2025-10-09', email: 'nasim_real@gmail.com'  },
   { id: '6',  name: 'Tariq Islam',   joinDate: '2025-10-09', email: 'tariq_real@gmail.com'  },
