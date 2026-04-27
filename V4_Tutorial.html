@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Team71 V4 – Complete Setup Tutorial</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:#020617;color:#e2e8f0;line-height:1.7;font-size:15px}
+.hero{background:linear-gradient(135deg,#0f172a,#134e4a);padding:44px 20px 36px;text-align:center;border-bottom:1px solid #1e293b;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,#16a34a15,transparent 65%);pointer-events:none}
+.hbadge{display:inline-flex;align-items:center;gap:6px;background:#16a34a15;border:1px solid #16a34a40;color:#4ade80;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:14px}
+.hdot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse 2s ease-in-out infinite}
+.hero h1{color:#f8fafc;font-size:clamp(20px,5vw,28px);font-weight:900;line-height:1.25}
+.hero h1 span{color:#4ade80}
+.hero p{color:#64748b;font-size:13px;margin-top:8px}
+/* KEY CHANGE BOX */
+.keychange{background:linear-gradient(135deg,#0f2a1a,#0a1f2e);border:2px solid #16a34a40;border-radius:18px;padding:20px;margin:24px auto;max-width:700px}
+.keychange h2{color:#4ade80;font-size:16px;font-weight:900;margin-bottom:12px}
+.krow{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #1e293b}
+.krow:last-child{border-bottom:none}
+.kicon{font-size:20px;flex-shrink:0;margin-top:2px}
+.ktext h4{color:#e2e8f0;font-size:14px;font-weight:800;margin-bottom:3px}
+.ktext p{color:#64748b;font-size:13px;line-height:1.6}
+/* TOC */
+.toc{background:#0a0f1a;border-bottom:1px solid #1e293b;padding:12px 20px;overflow-x:auto;white-space:nowrap;position:sticky;top:0;z-index:100}
+.toc a{display:inline-block;color:#64748b;font-size:12px;font-weight:700;text-decoration:none;margin-right:6px;background:#1e293b;padding:5px 12px;border-radius:99px;border:1px solid #334155;transition:.2s}
+.toc a:hover{background:#16a34a20;color:#4ade80;border-color:#16a34a40}
+.wrap{max-width:700px;margin:0 auto;padding:24px 16px 80px}
+/* SECTION */
+.section{background:#0f172a;border:1px solid #1e293b;border-radius:20px;margin-bottom:22px;overflow:hidden}
+.sec-head{display:flex;align-items:center;gap:14px;padding:16px 20px;background:#0a0f1a;border-bottom:1px solid #1e293b}
+.sec-num{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;color:#fff;flex-shrink:0}
+.ng{background:linear-gradient(135deg,#16a34a,#15803d)}
+.nb{background:linear-gradient(135deg,#2563eb,#1d4ed8)}
+.no{background:linear-gradient(135deg,#ea580c,#c2410c)}
+.np{background:linear-gradient(135deg,#7c3aed,#6d28d9)}
+.nt{background:linear-gradient(135deg,#0891b2,#0e7490)}
+.sec-title{font-size:16px;font-weight:900;color:#f1f5f9}
+.sec-sub{font-size:12px;color:#475569;margin-top:2px}
+.sec-body{padding:18px 20px}
+/* SUBSTEP */
+.sub{display:flex;gap:12px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #1e293b}
+.sub:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.sub-n{width:28px;height:28px;border-radius:99px;background:#16a34a18;border:1.5px solid #16a34a40;color:#4ade80;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.sub-c h4{font-size:14px;font-weight:800;color:#e2e8f0;margin-bottom:5px}
+.sub-c p{font-size:13px;color:#64748b;margin-bottom:8px}
+.sub-c p:last-child{margin-bottom:0}
+.sub-c p strong{color:#94a3b8}
+pre,code{font-family:'IBM Plex Mono',monospace}
+.code{background:#020617;border:1px solid #1e293b;border-radius:11px;padding:13px 16px;font-size:12px;color:#4ade80;line-height:1.9;margin:10px 0;overflow-x:auto}
+.code .dim{color:#334155}
+.code .w{color:#e2e8f0}
+.code .y{color:#fde68a}
+.code .b{color:#93c5fd}
+.code .r{color:#f87171}
+.code .g{color:#4ade80}
+code{background:#1e293b;color:#f87171;padding:2px 7px;border-radius:5px;font-size:12px}
+.click{display:flex;align-items:center;gap:10px;background:#1e3a5f;border:1.5px solid #2563eb30;border-radius:10px;padding:9px 13px;margin:8px 0;font-size:13px;color:#93c5fd;font-weight:700}
+.ok{background:#16a34a10;border:1.5px solid #16a34a30;border-radius:10px;padding:10px 14px;font-size:13px;color:#4ade80;margin:10px 0}
+.ok strong{display:block;margin-bottom:3px;color:#86efac}
+.warn{background:#fbbf2410;border:1.5px solid #fbbf2430;border-radius:10px;padding:10px 14px;font-size:13px;color:#fbbf24;margin:10px 0}
+.warn strong{display:block;margin-bottom:3px;color:#fde68a}
+.tip{background:#2563eb10;border:1.5px solid #2563eb30;border-radius:10px;padding:10px 14px;font-size:13px;color:#93c5fd;margin:10px 0}
+.tip strong{display:block;margin-bottom:3px;color:#bfdbfe}
+.url{background:#16a34a10;border:1.5px solid #16a34a30;border-radius:10px;padding:9px 14px;font-size:13px;color:#4ade80;font-weight:700;font-family:'IBM Plex Mono',monospace;margin:8px 0;word-break:break-all}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;border-radius:10px;overflow:hidden}
+th{background:#1e293b;color:#94a3b8;padding:9px 12px;text-align:left;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+td{padding:8px 12px;border-bottom:1px solid #1e293b;color:#94a3b8;vertical-align:top}
+td strong{color:#e2e8f0}
+tr:last-child td{border-bottom:none}
+td code{font-size:11px}
+.done{background:linear-gradient(135deg,#16a34a,#15803d);border-radius:16px;padding:24px;text-align:center}
+.done .big{font-size:44px;margin-bottom:8px}
+.done h2{color:#fff;font-weight:900;font-size:20px;margin-bottom:6px}
+.done p{color:#bbf7d0;font-size:13px}
+.done .box{background:#ffffff15;border-radius:10px;padding:10px 16px;font-size:12px;color:#dcfce7;margin-top:12px;line-height:2}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hbadge"><span class="hdot"></span> Version 4 · Complete Guide</div>
+  <h1>Team71 Fund Manager<br><span>V4 Setup Tutorial</span></h1>
+  <p>Member login finally fixed · UID-based matching · All features included</p>
+</div>
+
+<!-- KEY CHANGE -->
+<div class="keychange" style="margin:24px 16px">
+  <h2>🔑 What's New in V4 — Why Member Login Now Works</h2>
+  <div class="krow">
+    <div class="kicon">❌</div>
+    <div class="ktext">
+      <h4>Old method (V1–V3) — kept failing</h4>
+      <p>App tried to match member by <strong>email string</strong>. This failed because emails in Firebase Auth and constants.js never matched exactly due to case differences, spaces, or wrong IDs.</p>
+    </div>
+  </div>
+  <div class="krow">
+    <div class="kicon">✅</div>
+    <div class="ktext">
+      <h4>New method (V4) — guaranteed to work</h4>
+      <p>Admin adds each member's <strong>Firebase UID</strong> directly into their member record. When member logs in, app matches by UID — which is always unique and exact. No more mismatches.</p>
+    </div>
+  </div>
+  <div class="krow">
+    <div class="kicon">🔒</div>
+    <div class="ktext">
+      <h4>Your existing data is 100% safe</h4>
+      <p>All payments, expenses, extra donations stay in Firebase. V4 only changes how members are identified after login. Nothing is deleted.</p>
+    </div>
+  </div>
+</div>
+
+<div class="toc">
+  <a href="#s1">1. Upload to GitHub</a>
+  <a href="#s2">2. Netlify Deploy</a>
+  <a href="#s3">3. Get Member UIDs</a>
+  <a href="#s4">4. Link UIDs in App</a>
+  <a href="#s5">5. Test Login</a>
+  <a href="#s6">6. Share With Members</a>
+  <a href="#faq">FAQ</a>
+</div>
+
+<div class="wrap">
+
+<!-- STEP 1 -->
+<div class="section" id="s1">
+  <div class="sec-head">
+    <div class="sec-num ng">1</div>
+    <div>
+      <div class="sec-title">Upload V4 Files to GitHub</div>
+      <div class="sec-sub">Replace your existing code with V4 — data stays safe</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-n">1</div>
+      <div class="sub-c">
+        <h4>Download and unzip V4</h4>
+        <p>Download <strong>team71-fund-manager-v4.zip</strong> from Claude. Unzip it on your computer. You will get a folder called <strong>team71-fund-manager</strong>.</p>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">2</div>
+      <div class="sub-c">
+        <h4>Create your .env.local file</h4>
+        <p>Inside the unzipped folder, find <strong>.env.example</strong>. Open it with Notepad. Fill in your existing Firebase values (same ones you used before):</p>
+        <div class="code">
+VITE_FIREBASE_API_KEY=<span class="y">your existing value</span>
+VITE_FIREBASE_AUTH_DOMAIN=<span class="y">your existing value</span>
+VITE_FIREBASE_PROJECT_ID=<span class="y">your existing value</span>
+VITE_FIREBASE_STORAGE_BUCKET=<span class="y">your existing value</span>
+VITE_FIREBASE_MESSAGING_SENDER_ID=<span class="y">your existing value</span>
+VITE_FIREBASE_APP_ID=<span class="y">your existing value</span>
+VITE_ADMIN_EMAIL=<span class="y">your admin gmail</span>
+VITE_LOGO_URL=<span class="dim">optional — leave empty or add your logo URL</span>
+        </div>
+        <p>Save the file as <code>.env.local</code> (rename from .env.example)</p>
+        <div class="warn"><strong>⚠️ No quotes around values!</strong> Paste values directly without " " marks.</div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">3</div>
+      <div class="sub-c">
+        <h4>Upload to GitHub</h4>
+        <div class="url">🌐 https://github.com/YOUR-USERNAME/team71-fund-manager</div>
+        <div class="click"><span>👆</span> Click <strong>"Add file"</strong> → <strong>"Upload files"</strong></div>
+        <p>Drag and drop ALL files and folders from your unzipped V4 folder into the upload area.</p>
+        <div class="warn"><strong>⚠️ GitHub will say some files already exist.</strong> That is fine — click OK to overwrite them. This is what we want.</div>
+        <div class="click"><span>👆</span> Scroll down → Click <strong>"Commit changes"</strong></div>
+        <div class="ok"><strong>✅ V4 code uploaded to GitHub!</strong></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- STEP 2 -->
+<div class="section" id="s2">
+  <div class="sec-head">
+    <div class="sec-num nb">2</div>
+    <div>
+      <div class="sec-title">Netlify — Redeploy Your Website</div>
+      <div class="sec-sub">Netlify auto-detects GitHub changes and rebuilds</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-n">1</div>
+      <div class="sub-c">
+        <h4>Wait for auto-deploy OR trigger manually</h4>
+        <p>Netlify usually auto-detects GitHub changes within 1 minute. Go to:</p>
+        <div class="url">🌐 https://app.netlify.com</div>
+        <p>Open your site. If you see <strong>yellow "Building"</strong> — wait. If nothing started, manually trigger:</p>
+        <div class="click"><span>👆</span> Click <strong>"Deploys"</strong> tab → <strong>"Trigger deploy"</strong> → <strong>"Deploy site"</strong></div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">2</div>
+      <div class="sub-c">
+        <h4>Verify all 7 environment variables are set</h4>
+        <p>Netlify → Site configuration → Environment variables. Make sure all 7 exist:</p>
+        <table>
+          <tr><th>Variable</th><th>Status</th></tr>
+          <tr><td><code>VITE_FIREBASE_API_KEY</code></td><td>Must exist from before</td></tr>
+          <tr><td><code>VITE_FIREBASE_AUTH_DOMAIN</code></td><td>Must exist from before</td></tr>
+          <tr><td><code>VITE_FIREBASE_PROJECT_ID</code></td><td>Must exist from before</td></tr>
+          <tr><td><code>VITE_FIREBASE_STORAGE_BUCKET</code></td><td>Must exist from before</td></tr>
+          <tr><td><code>VITE_FIREBASE_MESSAGING_SENDER_ID</code></td><td>Must exist from before</td></tr>
+          <tr><td><code>VITE_FIREBASE_APP_ID</code></td><td>Must exist from before</td></tr>
+          <tr><td><code>VITE_ADMIN_EMAIL</code></td><td>Must exist from before</td></tr>
+        </table>
+        <p>After confirming → wait for green <strong>"Published"</strong> badge → your site is live with V4!</p>
+        <div class="ok"><strong>✅ Website updated to V4!</strong></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- STEP 3 -->
+<div class="section" id="s3">
+  <div class="sec-head">
+    <div class="sec-num no">3</div>
+    <div>
+      <div class="sec-title">Get Each Member's Firebase UID</div>
+      <div class="sec-sub">The UID is the unique key that connects login to payment data</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-n">1</div>
+      <div class="sub-c">
+        <h4>Open Firebase Authentication</h4>
+        <div class="url">🌐 https://console.firebase.google.com</div>
+        <p>Open your project → left sidebar → <strong>Build → Authentication → Users tab</strong></p>
+        <p>You will see a list of all your users with their emails.</p>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">2</div>
+      <div class="sub-c">
+        <h4>Copy each member's UID</h4>
+        <div class="click"><span>👆</span> Click on a member's row in the list</div>
+        <p>A panel opens on the right showing their details. You will see:</p>
+        <div class="code">
+<span class="y">User UID:</span>  <span class="w">abc123def456ghi789jkl012</span>
+<span class="y">Email:</span>     <span class="w">shakil@gmail.com</span>
+<span class="y">Created:</span>   <span class="w">Oct 9, 2025</span>
+        </div>
+        <div class="click"><span>👆</span> Click the <strong>copy icon</strong> next to the UID to copy it</div>
+        <div class="warn"><strong>⚠️ Write down each member's UID and their name!</strong> Keep a list like this in Notepad:</div>
+        <div class="code">
+<span class="dim">Member UIDs — keep this private</span>
+
+<span class="y">Shakil:</span>   <span class="w">abc123def456ghi789</span>
+<span class="y">Ruman:</span>    <span class="w">xyz789abc123def456</span>
+<span class="y">Member3:</span>  <span class="w">def456xyz789abc123</span>
+<span class="dim">... all 11 members</span>
+        </div>
+        <div class="tip"><strong>💡 Tip:</strong> Do all 11 members at once so you don't have to come back. Repeat for every member except admin.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- STEP 4 -->
+<div class="section" id="s4">
+  <div class="sec-head">
+    <div class="sec-num np">4</div>
+    <div>
+      <div class="sec-title">Link Each Member's UID in the App</div>
+      <div class="sec-sub">Login as Admin → Members tab → edit each member → paste their UID</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-n">1</div>
+      <div class="sub-c">
+        <h4>Login to your website as Admin</h4>
+        <p>Open your live website → login with your admin email and password.</p>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">2</div>
+      <div class="sub-c">
+        <h4>Go to Members tab</h4>
+        <div class="click"><span>👆</span> Tap <strong>👥 Members</strong> in the bottom navigation</div>
+        <p>You will see all your existing members listed. Each one will show a red warning:</p>
+        <div class="code"><span class="r">⚠️ No UID — member cannot login</span></div>
+        <p>This is normal — you need to add their UID now.</p>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">3</div>
+      <div class="sub-c">
+        <h4>Edit each member and add their UID</h4>
+        <div class="click"><span>👆</span> Tap the <strong>✏️ pencil icon</strong> next to a member</div>
+        <p>The edit form opens. You will see a new field at the bottom:</p>
+        <div class="code">
+<span class="y">Firebase UID</span> <span class="g">(Required for member login)</span>
+<span class="dim">Paste UID from Firebase Auth</span>
+        </div>
+        <div class="click"><span>👆</span> Tap the UID field → paste the UID you copied from Firebase</div>
+        <div class="click"><span>👆</span> Tap <strong>"Update"</strong> to save</div>
+        <p>After saving, the member row will now show:</p>
+        <div class="code"><span class="g">✅ Login linked</span></div>
+        <p>Repeat for all 11 members.</p>
+        <div class="ok"><strong>✅ All members linked!</strong> Each member can now login and see their own data.</div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">4</div>
+      <div class="sub-c">
+        <h4>What about members you add in future?</h4>
+        <p>When adding a new member using the <strong>+ Add</strong> button — the form already has the Firebase UID field. Just paste their UID when creating them. No extra steps needed.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- STEP 5 -->
+<div class="section" id="s5">
+  <div class="sec-head">
+    <div class="sec-num nt">5</div>
+    <div>
+      <div class="sec-title">Test Member Login</div>
+      <div class="sec-sub">Verify each member can see their own data</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-n">1</div>
+      <div class="sub-c">
+        <h4>Open website in private/incognito window</h4>
+        <p><strong>Chrome:</strong> Press Ctrl+Shift+N (Windows) or Cmd+Shift+N (Mac)<br>
+        <strong>Phone:</strong> Tap ⋮ menu → New incognito tab</p>
+        <p>Open your website URL in this private window so you test as a fresh user.</p>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">2</div>
+      <div class="sub-c">
+        <h4>Login with a member's email and password</h4>
+        <p>Use one member's Gmail and password you set in Firebase.</p>
+        <p>After login, check these things:</p>
+        <table>
+          <tr><th>What to check</th><th>Expected result</th></tr>
+          <tr><td>Top bar</td><td>Shows member's <strong>name</strong> (not email)</td></tr>
+          <tr><td>Mine tab</td><td>Shows their paid months in green ✅</td></tr>
+          <tr><td>Donations tab</td><td>Shows only their own row</td></tr>
+          <tr><td>Expenses tab</td><td>Visible but NO add/delete buttons</td></tr>
+          <tr><td>Extra tab</td><td>Visible but NO add/delete buttons</td></tr>
+          <tr><td>Members tab</td><td>NOT visible for members</td></tr>
+        </table>
+        <div class="ok"><strong>✅ If Mine tab shows their payments — everything is working!</strong></div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">3</div>
+      <div class="sub-c">
+        <h4>If Mine tab still shows ৳0 — check this</h4>
+        <p>This means the UID was not saved correctly. Do this:</p>
+        <p><strong>Step 1</strong> — Login as Admin → Members tab → tap ✏️ on that member</p>
+        <p><strong>Step 2</strong> — Check the UID field. Is it filled? If empty, paste the UID again.</p>
+        <p><strong>Step 3</strong> — Go to Firebase → Authentication → Users → click that member → copy their UID again carefully</p>
+        <p><strong>Step 4</strong> — Paste into the UID field → tap Update → test login again</p>
+        <div class="tip"><strong>💡 Common mistake:</strong> Accidentally copying extra spaces before or after the UID. Make sure you copy only the UID characters.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- STEP 6 -->
+<div class="section" id="s6">
+  <div class="sec-head">
+    <div class="sec-num ng">6</div>
+    <div>
+      <div class="sec-title">Share Login Details With All Members</div>
+      <div class="sec-sub">Send each member their email and password via WhatsApp</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-n">1</div>
+      <div class="sub-c">
+        <h4>Message to send each member</h4>
+        <div class="code">
+<span class="dim">Assalamu Alaikum [Name] bhai,</span>
+
+<span class="w">Team71 Fund Manager is ready!</span>
+<span class="w">You can now see your payments online.</span>
+
+<span class="y">🌐 Website:</span>  <span class="g">https://your-site.netlify.app</span>
+<span class="y">📧 Email:</span>    <span class="g">their@gmail.com</span>
+<span class="y">🔑 Password:</span> <span class="g">Their@2025</span>
+
+<span class="dim">How to install on your phone:</span>
+<span class="dim">Open in Chrome → tap ⋮ menu →</span>
+<span class="dim">"Add to Home Screen" → Install</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">2</div>
+      <div class="sub-c">
+        <h4>What members can see after login</h4>
+        <table>
+          <tr><th>Tab</th><th>What member sees</th></tr>
+          <tr><td>🏠 Home</td><td>Full dashboard — balance, collection chart, fund overview</td></tr>
+          <tr><td>💳 Donations</td><td>Their own payment row only</td></tr>
+          <tr><td>👤 Mine</td><td>All their paid and pending months with amounts</td></tr>
+          <tr><td>💸 Expenses</td><td>All expenses — view only, no add/delete</td></tr>
+          <tr><td>➕ Extra</td><td>All extra donations — view only, no add/delete</td></tr>
+          <tr><td>📊 Reports</td><td>Monthly reports and yearly summaries</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- FAQ -->
+<div class="section" id="faq">
+  <div class="sec-head">
+    <div class="sec-num nb">❓</div>
+    <div>
+      <div class="sec-title">FAQ — Common Questions</div>
+      <div class="sec-sub">Quick answers</div>
+    </div>
+  </div>
+  <div class="sec-body">
+
+    <div class="sub">
+      <div class="sub-n">Q</div>
+      <div class="sub-c">
+        <h4>Will uploading V4 delete my existing payments and expenses?</h4>
+        <p>No. All data is in Firebase. Uploading new code to GitHub never touches Firebase. Your payments, expenses, extra donations, and member records are all safe.</p>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">Q</div>
+      <div class="sub-c">
+        <h4>My members were added via the app (not constants.js). Does V4 still work?</h4>
+        <p>Yes! V4 works with members added any way — through the app or constants.js. You just need to edit each member in the Members tab and add their Firebase UID. The existing member IDs and payment data stay exactly as they are.</p>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">Q</div>
+      <div class="sub-c">
+        <h4>What is a Firebase UID exactly?</h4>
+        <p>It is a unique code Firebase assigns to every user account. It looks like: <code>abc123XYZdef456</code> — about 28 characters. It never changes. It is the most reliable way to identify a user.</p>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">Q</div>
+      <div class="sub-c">
+        <h4>A member forgot their password. What to do?</h4>
+        <p>Tell them to tap <strong>"Forgot password?"</strong> on the login page. They enter their email → Firebase sends a reset link → they set a new password. No admin action needed.</p>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">Q</div>
+      <div class="sub-c">
+        <h4>How do I add a new member in V4?</h4>
+        <p><strong>Step 1</strong> — Firebase Auth → Add user → enter their email + password<br>
+        <strong>Step 2</strong> — Copy their UID from Firebase Auth<br>
+        <strong>Step 3</strong> — In your app, Admin → Members → + Add → fill name, email, join date, and paste UID<br>
+        <strong>Step 4</strong> — Share their email and password via WhatsApp</p>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-n">Q</div>
+      <div class="sub-c">
+        <h4>Can I still use the old constants.js member list?</h4>
+        <p>In V4, the constants.js SEED_MEMBERS is only used if your Firebase members collection is completely empty (first ever launch). Since you already have members in Firebase from before, constants.js is not used for your existing data. Your Firebase member records are the source of truth in V4.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- DONE -->
+<div class="done">
+  <div class="big">🎉</div>
+  <h2>V4 is ready — member login finally works!</h2>
+  <p>UID-based matching means no more mismatches. Every member sees their own data.</p>
+  <div class="box">
+    🔑 Admin → full access to all tabs and features<br>
+    👤 Members → see their payments, expenses (view), extra (view), reports<br>
+    ☁️ All data → safe in Firebase, never affected by code updates<br>
+    📱 Mobile → install as app via Chrome → Add to Home Screen
+  </div>
+</div>
+
+</div>
+</body>
+</html>
