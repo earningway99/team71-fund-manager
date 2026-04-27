@@ -63,7 +63,7 @@ export default function Login({ onLogin, logoUrl }) {
         </div>
         <h1 style={S.loginH1}>Youth Organisations</h1>
         <p  style={S.loginSub}>by Team71 · Fund Manager</p>
-        <div style={S.cloudBadge}>☁️ Secure Login · V4</div>
+        <div style={S.cloudBadge}>All rights reserved by Mahmood Shakil</div>
 
         {resetSent ? (
           <div style={{background:'#f0fdf4',border:'1.5px solid #86efac',borderRadius:14,padding:'20px 16px',textAlign:'center',color:'#14532d'}}>
@@ -127,7 +127,7 @@ export default function Login({ onLogin, logoUrl }) {
             )}
           </>
         )}
-        <p style={S.loginHint}>Demo: admin123 · member123</p>
+        <p style={S.loginHint}>Remember your password for future login.</p>
       </div>
     </div>
   )
